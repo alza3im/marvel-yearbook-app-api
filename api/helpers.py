@@ -20,6 +20,29 @@ def interpolate_marvel_api(feature):
     return url + auth
 
 
+def get_feature_thumbnails(results, attribute):
+    "Helper function that returns a list of features' stories and thumbnails"
+    feature_thumbnails = []
+    for result in results:
+        feature = result.get(attribute, f"{attribute} Not Available")
+        thumbnail = result.get("thumbnail", None)
+        if thumbnail is None:
+            thumbnail = interpolate_missing_thumbnail_dict()
+        print(f" thumbnail is : {thumbnail}")
+        current_char = {attribute: feature, "thumbnail": thumbnail}
+        feature_thumbnails.append(current_char)
+
+    return feature_thumbnails
+
+
+def interpolate_missing_thumbnail_dict():
+    """This functions creatues thumbnail dict incase it's missing from api"""
+    return {
+        "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+        "extension": "jpg",
+    }
+
+
 def get_results(url):
     """Helper function to get results from api provided a url"""
     resp = requests.get(url=url)
