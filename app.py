@@ -3,7 +3,7 @@ import os
 from config import settings
 from flask import Flask
 from flask_cors import CORS
-
+from api import api
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -20,6 +20,9 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
     app.config.from_object(settings.ProductionConfig)
+
+    # initialize flask_restful api
+    api.init_app(app)
 
     # initialize SQLAlchemy
     # db.init_app(app)
