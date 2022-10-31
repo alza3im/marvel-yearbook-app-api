@@ -34,3 +34,15 @@ Try the following endpoints
 /comics
 /stories
 ```
+
+#### To do :
+There's still a lot to be considred to do for this application to be production ready, 
+the following is a simple to do list:
+
+1. Add a data storage, which can be a postgresql with sqlalchemy (boiler-plate for a table is in models/)
+as orm or Nosql such as mongodb.
+2. Implement proper caching
+3. Consider Asynchronisim for when we add more complex computations, i.e : Use Celery task queue to handle
+long-running tasks.
+4. In case we need to scale our application, Nginx can be utilized for load balancing as well as serving static files,
+if we ever need to add any.
