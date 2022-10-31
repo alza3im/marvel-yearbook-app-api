@@ -28,7 +28,6 @@ def get_feature_thumbnails(results, attribute):
         thumbnail = result.get("thumbnail", None)
         if thumbnail is None:
             thumbnail = interpolate_missing_thumbnail_dict()
-        print(f" thumbnail is : {thumbnail}")
         current_char = {attribute: feature, "thumbnail": thumbnail}
         feature_thumbnails.append(current_char)
 
